@@ -63,7 +63,6 @@ public class BlogController {
         currentBlog.setContent(blog.getContent());
         currentBlog.setNameImg(blog.getNameImg());
         currentBlog.setTitle(blog.getTitle());
-        currentBlog.setId(blog.getId());
 
         blogService.save(currentBlog);
         return new ResponseEntity<Blog>(currentBlog, HttpStatus.OK);
