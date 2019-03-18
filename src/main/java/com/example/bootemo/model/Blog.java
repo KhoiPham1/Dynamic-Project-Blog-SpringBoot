@@ -1,9 +1,6 @@
 package com.example.bootemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "blog")
@@ -13,6 +10,7 @@ public class Blog {
     private Long id;
 
     private String title;
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
     private String nameImg;
     private String category;
