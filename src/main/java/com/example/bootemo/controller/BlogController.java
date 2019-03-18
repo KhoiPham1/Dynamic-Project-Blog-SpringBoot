@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class BlogController {
     @Autowired
     private BlogService blogService;
@@ -47,7 +47,8 @@ public class BlogController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/blog/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/blog/{id}", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Blog> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog) {
         System.out.println("Updating group " + id);
 
