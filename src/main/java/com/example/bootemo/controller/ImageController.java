@@ -26,15 +26,6 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
-    @RequestMapping(value = "/image/",method = RequestMethod.GET)
-    public ResponseEntity<List<Image>> listAllGroup(Pageable pageable){
-        List<Image> groups = imageService.findAll();
-        if (groups.isEmpty()){
-            return new ResponseEntity<List<Image>>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<Image>>(groups, HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/image/",method = RequestMethod.POST)
     public ResponseEntity<?> createStaff(@RequestParam(name = "file") MultipartFile file, HttpServletRequest servletRequest) throws URISyntaxException {
         try{
@@ -58,6 +49,16 @@ public class ImageController {
                     body(new InputStreamResource(file.getInputStream()));
         } catch (IOException e){
             return ResponseEntity.badRequest().body("couldn't find");
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/image/{filename:.+}")
+    public ResponseEntity<?> deleteFile (@PathVariable String filename) {
+        try {
+            imageService.delete(filename);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("success delete");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("fail delete");
         }
     }
 }

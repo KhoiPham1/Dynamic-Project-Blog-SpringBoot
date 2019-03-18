@@ -42,6 +42,8 @@ public class ImageServiceIml implements ImageService {
 
     @Override
     public void delete(String name) throws IOException {
-
+        Image byName = imageRepository.findByName(name);
+        imageRepository.delete(byName);
+        Files.deleteIfExists(Paths.get(UPLOAD, name));
     }
 }
