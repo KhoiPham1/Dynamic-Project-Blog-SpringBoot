@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ImageServiceIml implements ImageService {
+public class ImageServiceImpl implements ImageService {
     private String UPLOAD = "upload-dir";
 
     @Autowired
