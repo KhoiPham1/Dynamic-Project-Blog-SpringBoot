@@ -1,8 +1,10 @@
 package com.example.bootemo;
 
 import com.example.bootemo.service.BlogService;
+import com.example.bootemo.service.CategoryService;
 import com.example.bootemo.service.ImageService;
 import com.example.bootemo.service.imp.BlogServiceImp;
+import com.example.bootemo.service.imp.CategoryServiceImp;
 import com.example.bootemo.service.imp.ImageServiceIml;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +21,10 @@ public class BootemoApplication {
 	}
 	@Bean
 	public ImageService imageService(){return new ImageServiceIml();
+	}
+	@Bean
+	public CategoryService categoryService() {
+		return new CategoryServiceImp();
 	}
 }
 

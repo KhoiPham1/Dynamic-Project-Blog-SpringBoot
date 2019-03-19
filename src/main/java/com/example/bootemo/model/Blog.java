@@ -13,7 +13,11 @@ public class Blog {
     @Column(columnDefinition = "LONGTEXT")
     private String content;
     private String nameImg;
-    private String category;
+
+    @ManyToOne(targetEntity = Category.class)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 
     public Long getId() {
         return id;
@@ -47,18 +51,18 @@ public class Blog {
         this.nameImg = nameImg;
     }
 
-    public Blog() {
-    }
-
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public Blog(String title, String content, String nameImg, String category) {
+    public Blog() {
+    }
+
+    public Blog(String title, String content, String nameImg, Category category) {
         this.title = title;
         this.content = content;
         this.nameImg = nameImg;
