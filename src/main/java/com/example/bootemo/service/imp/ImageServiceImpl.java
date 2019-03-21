@@ -36,7 +36,10 @@ public class ImageServiceImpl implements ImageService {
     public void create(MultipartFile file) throws IOException {
         if (!file.isEmpty()){
             Files.copy(file.getInputStream(), Paths.get(UPLOAD, file.getOriginalFilename()));
+            // getinputstream lấy chuỗi kí tự để cấu hình thành 1 ảnh
+            //getoriginalfilename để lưu tên ảnh
             imageRepository.save(new Image(file.getOriginalFilename()));
+
         }
     }
 
@@ -44,6 +47,6 @@ public class ImageServiceImpl implements ImageService {
     public void delete(String name) throws IOException {
         Image byName = imageRepository.findByName(name);
         imageRepository.delete(byName);
-        Files.deleteIfExists(Paths.get(UPLOAD, name));
+        Files.deleteIfExists(Paths.get(UPLOAD, name)); // để xóa ảnh trong file upload dir( xóa sự tồn tại)
     }
 }

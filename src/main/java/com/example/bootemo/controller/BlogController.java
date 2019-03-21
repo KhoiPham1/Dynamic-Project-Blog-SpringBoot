@@ -47,7 +47,7 @@ public class BlogController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/blog/{id}", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Blog> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog) {
         System.out.println("Updating group " + id);
