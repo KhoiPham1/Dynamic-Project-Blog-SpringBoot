@@ -1,7 +1,9 @@
 package com.example.bootemo.controller;
 
 import com.example.bootemo.model.Blog;
+import com.example.bootemo.model.Category;
 import com.example.bootemo.service.BlogService;
+import com.example.bootemo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ import java.util.List;
 public class BlogController {
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/blog/",method = RequestMethod.GET)
     public ResponseEntity<List<Blog>> listAllBlog(){
@@ -80,5 +85,16 @@ public class BlogController {
 
         blogService.delete(id);
         return new ResponseEntity<Blog>(HttpStatus.NO_CONTENT);
+    }
+
+    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Blog>> getListBlog (@PathVariable("id") long id){
+        Category category = categoryService.findById(id);
+        if (category == null){
+            System.out.println("Category with id " + id + " not found");
+            return new ResponseEntity<List<Blog>>(HttpStatus.NOT_FOUND);
+        }
+        List<Blog> blogs = blogService.findAllByCategory(category);
+        return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
     }
 }
