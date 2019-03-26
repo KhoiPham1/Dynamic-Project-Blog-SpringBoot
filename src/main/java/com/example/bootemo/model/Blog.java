@@ -1,5 +1,9 @@
 package com.example.bootemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,8 +19,9 @@ public class Blog {
     private String nameImg;
     private Boolean boxCheck;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
+    @JsonIgnoreProperties(value = "blogs", allowSetters = true)
     private Category category;
 
     public Long getId() {
@@ -75,5 +80,9 @@ public class Blog {
 
     public void setBoxCheck(Boolean boxCheck) {
         this.boxCheck = boxCheck;
+    }
+    @Override
+    public String toString() {
+        return String.format("Blog[id=%d, title='%s', nameImg='%s']", id, title, nameImg);
     }
 }
