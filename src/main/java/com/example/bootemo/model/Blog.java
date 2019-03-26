@@ -13,6 +13,7 @@ public class Blog {
     @Column(columnDefinition = "LONGTEXT")
     private String content;
     private String nameImg;
+    private Boolean boxCheck;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
@@ -66,5 +67,13 @@ public class Blog {
         this.content = content;
         this.nameImg = nameImg;
         this.category = category;
+    }
+
+    public Boolean getBoxCheck() {
+        return boxCheck;
+    }
+
+    public void setBoxCheck(Boolean boxCheck) {
+        this.boxCheck = boxCheck;
     }
 }
