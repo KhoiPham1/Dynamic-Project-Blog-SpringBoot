@@ -1,9 +1,11 @@
 package com.example.bootemo;
 
 import com.example.bootemo.service.BlogService;
+import com.example.bootemo.service.CategoryService;
 import com.example.bootemo.service.ImageService;
 import com.example.bootemo.service.imp.BlogServiceImpl;
 import com.example.bootemo.service.imp.ImageServiceImpl;
+import com.example.bootemo.service.imp.CategoryServiceImp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +21,9 @@ public class BootemoApplication {
 	}
 	@Bean
 	public ImageService imageService(){return new ImageServiceImpl();
+	}
+	@Bean
+	public CategoryService categoryService(){return new CategoryServiceImp();
 	}
 }
 
