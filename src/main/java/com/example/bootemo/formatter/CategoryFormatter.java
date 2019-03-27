@@ -13,6 +13,7 @@ public class CategoryFormatter implements Formatter<Category> {
 
     @Autowired
     public CategoryFormatter (CategoryService categoryService){
+
         this.categoryService = categoryService;
     }
 
