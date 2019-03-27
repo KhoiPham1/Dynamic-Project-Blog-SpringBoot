@@ -45,7 +45,7 @@ public class BlogController {
 
     @RequestMapping(value = "/blog/", method = RequestMethod.POST)
     public ResponseEntity<Void> createBlog(@RequestBody Blog blog, UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating blog " + blog.getTitle());
+        System. out.println("Creating blog " + blog.getTitle());
         blogService.save(blog);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/blog/{id}").buildAndExpand(blog.getId()).toUri());
