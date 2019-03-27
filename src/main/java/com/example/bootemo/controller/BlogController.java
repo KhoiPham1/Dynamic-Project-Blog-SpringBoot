@@ -98,4 +98,13 @@ public class BlogController {
         List<Blog> blogs = blogService.findAllByCategory(category);
         return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/blog/{name}", method = RequestMethod.GET)
+    public ResponseEntity<List<Blog>> listBlogByName(@PathVariable("name") String name) {
+        List<Blog> blogs = blogService.findAllByTitle(name);
+        if (blogs == null) {
+            return new ResponseEntity<List<Blog>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
+    }
 }

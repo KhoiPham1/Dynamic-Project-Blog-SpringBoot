@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface BlogRepository extends PagingAndSortingRepository<Blog, Long> {
     List<Blog> findAllByCategory (Category category);
+    List<Blog> findAllByTitleContaining(String name);
 }

@@ -15,4 +15,6 @@ public interface BlogService {
     void delete(Long id);
 
     List<Blog> findAllByCategory (Category category);
+
+    List<Blog> findAllByTitle(String name);
 }

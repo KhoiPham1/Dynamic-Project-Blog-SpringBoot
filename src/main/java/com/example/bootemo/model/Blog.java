@@ -67,7 +67,7 @@ public class Blog {
 
     public Blog() {
     }
-
+  
     public Category getCategory() {
         return category;
     }
