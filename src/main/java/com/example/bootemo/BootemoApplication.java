@@ -6,7 +6,6 @@ import com.example.bootemo.service.ImageService;
 import com.example.bootemo.service.imp.BlogServiceImpl;
 import com.example.bootemo.service.imp.ImageServiceImpl;
 import com.example.bootemo.service.imp.CategoryServiceImp;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
