@@ -3,7 +3,7 @@ package com.example.bootemo;
 import com.example.bootemo.service.BlogService;
 import com.example.bootemo.service.CategoryService;
 import com.example.bootemo.service.ImageService;
-import com.example.bootemo.service.imp.BlogServiceImpl;
+import com.example.bootemo.service.imp.BlogServiceImp;
 import com.example.bootemo.service.imp.ImageServiceImpl;
 import com.example.bootemo.service.imp.CategoryServiceImp;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +17,7 @@ public class BootemoApplication {
 		SpringApplication.run(BootemoApplication.class, args);
 	}
 	@Bean
-	public BlogService blogService(){return new BlogServiceImpl();
+	public BlogService blogService(){return new BlogServiceImp();
 	}
 	@Bean
 	public ImageService imageService(){return new ImageServiceImpl();

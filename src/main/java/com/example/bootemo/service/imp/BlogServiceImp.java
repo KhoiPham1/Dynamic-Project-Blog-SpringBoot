@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class BlogServiceImpl implements BlogService {
+public class BlogServiceImp implements BlogService {
     @Autowired
     private BlogRepository blogRepository;
 
