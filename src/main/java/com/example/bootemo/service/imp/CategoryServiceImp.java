@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class CategoryServiceImp implements CategoryService {
-
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -23,7 +22,7 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public void save(Category category) {
+    public void create(Category category) {
         categoryRepository.save(category);
     }
 }

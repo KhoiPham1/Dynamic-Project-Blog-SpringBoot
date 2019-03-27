@@ -16,18 +16,27 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class CategoryController {
-
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/categories/",method = RequestMethod.GET)
-    public ResponseEntity<List<Category>> listAllBlog(){
+    @RequestMapping(value = "/category/", method = RequestMethod.POST)
+    public ResponseEntity<Void> createCategory(@RequestBody Category category, UriComponentsBuilder ucBuilder) {
+        System.out.println("Creating blog " + category.getCategory());
+        categoryService.create(category);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/category/{id}").buildAndExpand(category.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/category/",method = RequestMethod.GET)
+    public ResponseEntity<List<Category>> listAllCategory(){
         List<Category> categories = categoryService.findAll();
         if (categories.isEmpty()){
             return new ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
     }
+
 
     @RequestMapping(value = "/categories/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Category> getCategory(@PathVariable Long id){

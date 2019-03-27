@@ -1,26 +1,17 @@
 package com.example.bootemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
 public class Category {
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String name;
-
-    public Category(String name) {
-        this.name = name;
-    }
-
-    public Category() {
-    }
 
     public Long getId() {
         return id;
@@ -30,11 +21,33 @@ public class Category {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(String category) {
+        this.category = category;
     }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    public Category() {
+    }
+
+    public Category(String category, List<Blog> blogs) {
+        this.category = category;
+        this.blogs = blogs;
+    }
+
+    private String category;
+
+    @JsonIgnoreProperties(value = "category", allowSetters = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category",  orphanRemoval = true)
+    private List<Blog> blogs;
 }

@@ -9,11 +9,11 @@ import java.text.ParseException;
 import java.util.Locale;
 
 public class CategoryFormatter implements Formatter<Category> {
-
     private CategoryService categoryService;
 
     @Autowired
-    public CategoryFormatter(CategoryService categoryService) {
+    public CategoryFormatter (CategoryService categoryService){
+
         this.categoryService = categoryService;
     }
 
@@ -24,6 +24,6 @@ public class CategoryFormatter implements Formatter<Category> {
 
     @Override
     public String print(Category object, Locale locale) {
-        return null;
+        return "[" + object.getId() + ", " +object.getCategory() + "]";
     }
 }

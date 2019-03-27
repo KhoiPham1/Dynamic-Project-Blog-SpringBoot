@@ -23,8 +23,7 @@ public class BootemoApplication {
 	public ImageService imageService(){return new ImageServiceIml();
 	}
 	@Bean
-	public CategoryService categoryService() {
-		return new CategoryServiceImp();
+	public CategoryService categoryService(){return new CategoryServiceImp();
 	}
 }
 

@@ -1,6 +1,7 @@
 package com.example.bootemo.service.imp;
 
 import com.example.bootemo.model.Blog;
+import com.example.bootemo.model.Category;
 import com.example.bootemo.repository.BlogRepository;
 import com.example.bootemo.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,10 @@ public class BlogServiceImp implements BlogService {
     @Override
     public void delete(Long id) {
         blogRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Blog> findAllByCategory(Category category) {
+        return blogRepository.findAllByCategory(category);
     }
 }
