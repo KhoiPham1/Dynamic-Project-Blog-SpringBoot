@@ -99,7 +99,7 @@ public class BlogController {
         return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/blog/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/blog/{name}/title", method = RequestMethod.GET)
     public ResponseEntity<List<Blog>> listBlogByName(@PathVariable("name") String name) {
         List<Blog> blogs = blogService.findAllByTitle(name);
         if (blogs == null) {
