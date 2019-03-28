@@ -1,6 +1,5 @@
 package com.example.bootemo.controller;
 
-import com.example.bootemo.model.Blog;
 import com.example.bootemo.model.Category;
 import com.example.bootemo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
