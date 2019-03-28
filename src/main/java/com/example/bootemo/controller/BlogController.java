@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BlogController {
     @Autowired
     private BlogService blogService;
@@ -45,14 +45,14 @@ public class BlogController {
 
     @RequestMapping(value = "/blog/", method = RequestMethod.POST)
     public ResponseEntity<Void> createBlog(@RequestBody Blog blog, UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating blog " + blog.getTitle());
+        System. out.println("Creating blog " + blog.getTitle());
         blogService.save(blog);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/blog/{id}").buildAndExpand(blog.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "*")
+//    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/blog/{id}", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Blog> updateBlog(@PathVariable("id") long id, @RequestBody Blog blog) {
         System.out.println("Updating group " + id);
@@ -68,6 +68,7 @@ public class BlogController {
         currentBlog.setContent(blog.getContent());
         currentBlog.setNameImg(blog.getNameImg());
         currentBlog.setTitle(blog.getTitle());
+        currentBlog.setMode(blog.getMode());
 
         blogService.save(currentBlog);
         return new ResponseEntity<Blog>(currentBlog, HttpStatus.OK);

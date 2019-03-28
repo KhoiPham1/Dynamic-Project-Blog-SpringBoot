@@ -18,6 +18,15 @@ public class Blog {
     private String content;
     private String nameImg;
     private Boolean boxCheck;
+    private Boolean mode;
+
+    public Boolean getMode() {
+        return mode;
+    }
+
+    public void setMode(Boolean mode) {
+        this.mode = mode;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
@@ -67,11 +76,12 @@ public class Blog {
         this.category = category;
     }
 
-    public Blog(String title, String content, String nameImg, Category category) {
+    public Blog(String title, String content, String nameImg, Category category, Boolean mode) {
         this.title = title;
         this.content = content;
         this.nameImg = nameImg;
         this.category = category;
+        this.mode = mode;
     }
 
     public Boolean getBoxCheck() {
