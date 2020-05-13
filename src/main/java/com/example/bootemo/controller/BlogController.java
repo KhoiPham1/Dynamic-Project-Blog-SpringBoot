@@ -26,6 +26,7 @@ public class BlogController {
     @RequestMapping(value = "/blog/",method = RequestMethod.GET)
     public ResponseEntity<List<Blog>> listAllBlog(){
         List<Blog> groups = blogService.findAll();
+        String a = "b";
         if (groups.isEmpty()){
             return new ResponseEntity<List<Blog>>(HttpStatus.NO_CONTENT);
         }
